@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="set bg">
+    <main class="form-signin bg-dark p-5">
+
+        <form>
+            <div class="row">
+                <div class="col-4 mx-auto">
+                    <!-- <img  class="mb-4" src="https://rapidapi.com/static-assets/default/logo-85082ac1-9f07-481f-97c7-538f38e56420.svg" alt="" width="150" height="57"> -->
+                    <h2 class="text-primary">Bookly</h2>
+                </div>
+            </div>
+            <h1 class="h3 mb-3 fw-normal text-center">Please sign in</h1>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <div class="form">
+                <button class="w-100 btn btn-lg btn-primary" type="submit" required>Sign up</button>
+                <div class="d-flex justify-content-between mt-2">
+                    <p>Dont have an account?</p>
+                    <p ><a asp-area="" asp-controller="Auth" asp-action="Register">Register <i class='bx bx-right-arrow-alt'></i></a></p>
+                </div>
+            </div>
+            
+        </form>
+
+    </main>
+</div>
