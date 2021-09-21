@@ -11,21 +11,22 @@ namespace ELibrary.MVC.Repository
     public class Books
     {
         IConfiguration Configuration;
-        public Books(IConfiguration configuration)
+        private HttpClient _client;
+        public Books(IConfiguration configuration, HttpClient httpClient)
         {
             Configuration = configuration;
+            _client = httpClient;
         }
 
         public async void GetAllBooks()
         {
            
             List<string> EmpInfo = new List<string>();
-            var client = new HttpClient();
             var baseUrl = Configuration.GetSection("BaseUrl").Value;
-            client.BaseAddress = new Uri(baseUrl);
-            client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage Res = await client.GetAsync("api/string/GetAllEmployees");
+            _client.BaseAddress = new Uri(baseUrl);
+            _client.DefaultRequestHeaders.Clear();
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage Res = await _client.GetAsync("api/string/GetAllEmployees");
             if (Res.IsSuccessStatusCode)
             {
                 var BookResponse = Res.Content.ReadAsStringAsync().Result;
@@ -33,6 +34,8 @@ namespace ELibrary.MVC.Repository
             }
 
         }
+
+        
     }
 }
    
