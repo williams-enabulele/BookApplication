@@ -5,33 +5,29 @@ using Microsoft.Extensions.Configuration;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Configuration;
+using ELibrary.MVC.Repository.Implementations;
+using ELibrary.MVC.Repository.Interfaces;
+using ELibrary.API.Model.DTO.ResponseDTO;
 
 namespace ELibrary.MVC.Repository
 {
     public class Books
     {
         IConfiguration Configuration;
-        private HttpClient _client;
-        public Books(IConfiguration configuration, HttpClient httpClient)
+        private readonly IServiceRepository _serviceRepository;
+       
+        public Books(IConfiguration configuration, IServiceRepository serviceRepository)
         {
             Configuration = configuration;
-            _client = httpClient;
+            _serviceRepository = serviceRepository;
         }
 
         public async void GetAllBooks()
         {
-           
-            List<string> EmpInfo = new List<string>();
-            var baseUrl = Configuration.GetSection("BaseUrl").Value;
-            _client.BaseAddress = new Uri(baseUrl);
-            _client.DefaultRequestHeaders.Clear();
-            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage Res = await _client.GetAsync("api/string/GetAllEmployees");
-            if (Res.IsSuccessStatusCode)
-            {
-                var BookResponse = Res.Content.ReadAsStringAsync().Result;
-                EmpInfo = JsonConvert.DeserializeObject<List<string>>(BookResponse);
-            }
+            HttpResponseMaessage bookResults = _serviceRepository.GetResponse("api/showroom/getallproducts"));
+            response.EnsureSuccessStatusCode();
+            List<BookResponseDTO> products = response.Content.ReadAsAsync<List<Models.Product>>().Result;
+
 
         }
 
