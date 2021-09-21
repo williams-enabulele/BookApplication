@@ -3,6 +3,9 @@
 *@
 @{
 }
+@{
+    ViewData["Title"] = "Register";
+}
 
 <div class="set bg">
     <main class="form-signin bg-dark p-5">
@@ -18,12 +21,15 @@
                 <input type="email" name="" class="form-control mb-2" placeholder="Email">
                 <input type="text" name="" class="form-control mb-2" placeholder="Phone">
                 <input type="password" name="" class="form-control mb-2" placeholder="Password">
-                <input type="password" name="" class="form-control mb-2" placeholder="Repeat Password" >
+                <input type="password" name="" class="form-control mb-2" placeholder="Repeat Password">
 
                 <button class="w-100 btn btn-md btn-primary" type="submit" required>Sign up</button>
                 <div class="d-flex justify-content-between mt-2">
                     <p>Already have an account?</p>
                     <p><a asp-area="" asp-controller="Auth" asp-action="Login">Login <i class='bx bx-right-arrow-alt'></i></a></p>
+                </div>
+                <div class="d-flex justify-content-start">
+                    <p><a asp-area="" asp-controller="Home" asp-action=""><i class='bx bx-left-arrow-alt'></i> Home</a></p>
                 </div>
             </div>
 
@@ -32,5 +38,5 @@
         </form>
 
     </main>
-   
+
 </div>
