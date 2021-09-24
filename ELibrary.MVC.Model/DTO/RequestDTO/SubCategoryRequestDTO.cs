@@ -1,22 +1,22 @@
-﻿using System;
+﻿using ELibrary.MVC.Model.DTO.RequestDTO;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ELibrary.API.Model.DTO
+namespace ELibrary.MVC.Model.DTO.RequestDTO
 {
-    public class SubCategoryResponseDTO
+    public class SubCategoryRequestDTO
     {
         public string MainCategoryId { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
+
         [Required]
         [StringLength(150), DataType(DataType.Text)]
         public string Description { get; set; }
-        public MainCategoryResponseDTO MainCategory { get; set; }
-        public ICollection<BookResponseDTO> Books { get; set; }
+
+        public MainCategoryRequestDTO MainCategory { get; set; }
+        public ICollection<BookRequestDTO> Books { get; set; }
     }
 }

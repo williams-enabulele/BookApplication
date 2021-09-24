@@ -14,16 +14,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Bookly - @ViewData["Title"]</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom fonts for this template-->
+    <link href="~/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
+    <!-- Custom styles for this page -->
+    <link href="~/static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="~/static/css/sb-admin-2.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -37,18 +40,18 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class='bx bx-book-reader'></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Bookly</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+            <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Dashboard" ? "active" : "") ">
+                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Dashboard">
+                    <i class='bx bxs-dashboard'></i>
                     <span>Dashboard</span>
                 </a>
             </li>
@@ -58,40 +61,39 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Menu
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            <li class="nav-item ">
+                <a class="nav-link collapsed @(ViewContext.RouteData.Values["Action"].ToString() == "Users" ? "active" : "")" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <i class='bx bx-user'></i>
+                    <span>Users</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <h6 class="collapse-header">Sub Menu:</h6>
+                        <a class="collapse-item @(ViewContext.RouteData.Values["Action"].ToString() == "AddUser" ? "active" : "")" asp-area="" asp-controller="Admin" asp-action="AddUser">Add User</a>
+                        <a class="collapse-item @(ViewContext.RouteData.Values["Action"].ToString() == "Users" ? "active" : "")" asp-area="" asp-controller="Admin" asp-action="Users">Manage Users</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            <li class="nav-item ">
+                <a class="nav-link collapsed @(ViewContext.RouteData.Values["Controller"].ToString() == "Book" ? "active" : "")" data-toggle="collapse" data-target="#collapseUtilities"
                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <i class='bx bx-book-open'></i>
+                    <span>Books</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <h6 class="collapse-header">Sub Menu:</h6>
+                        <a class="collapse-item @(ViewContext.RouteData.Values["Action"].ToString() == "AddBook" ? "active" : "")" asp-area="" asp-controller="Admin" asp-action="AddBook">Add Book</a>
+                        <a class="collapse-item @(ViewContext.RouteData.Values["Action"].ToString() == "Book" ? "active" : "")" asp-area="" asp-controller="Admin" asp-action="Book">Manage Books</a>
+
                     </div>
                 </div>
             </li>
@@ -101,61 +103,24 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Settings
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                <a class="nav-link collapsed @(ViewContext.RouteData.Values["Action"].ToString() == "Category" ? "active" : "")" data-toggle="collapse" data-target="#collapsePages"
                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <i class='bx bx-cog'></i>
+                    <span>Categories</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <h6 class="collapse-header">Manage Category</h6>
+                        <a class="collapse-item @(ViewContext.RouteData.Values["Action"].ToString() == "Category" ? "active" : "")" asp-area="" asp-controller="Admin" asp-action="Category">Manage Main Category</a>
+                        <a class="collapse-item @(ViewContext.RouteData.Values["Action"].ToString() == "SubCategory" ? "active" : "")" asp-area="" asp-controller="Admin" asp-action="SubCategory">Manage Sub Category</a>
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span>
-                </a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
-
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -192,7 +157,7 @@
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
+                                <i class='bx bx-search-alt-2'></i>
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
@@ -204,7 +169,7 @@
                                                aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
+                                                <i class='bx bx-search-alt-2'></i>
                                             </button>
                                         </div>
                                     </div>
@@ -216,7 +181,7 @@
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
+                                <i class='bx bx-bell'></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
@@ -229,7 +194,7 @@
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
                                         <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
+                                            <i class='bx bx-bell'></i>
                                         </div>
                                     </div>
                                     <div>
@@ -267,7 +232,7 @@
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
+                                <i class='bx bx-envelope'></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
@@ -343,9 +308,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Sapa Biemesi</span>
                                 <img class="img-profile rounded-circle"
-                                     src="img/undraw_profile.svg">
+                                     src="~/static/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -369,16 +334,12 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
 
                 <div class="container-fluid">
                     @RenderBody()
                 </div>
-
-
 
                 <!-- End of Topbar -->
             </div>
@@ -392,10 +353,8 @@
                 </div>
             </footer>
             <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
@@ -435,11 +394,11 @@
 
     <!-- Page level plugins -->
     <script src="~/static/vendor/chart.js/Chart.min.js"></script>
-
+    <!-- Page level plugins -->
+    <!-- Page level custom scripts -->
     <!-- Page level custom scripts -->
     <script src="~/static/js/demo/chart-area-demo.js"></script>
     <script src="~/static/js/demo/chart-pie-demo.js"></script>
 
 </body>
-
 </html>

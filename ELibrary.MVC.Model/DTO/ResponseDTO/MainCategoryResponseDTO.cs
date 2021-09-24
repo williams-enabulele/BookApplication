@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ELibrary.API.Model.DTO
+namespace ELibrary.MVC.Model.DTO.ResponseDTO
 {
-    public class MainCategoryDTO
-    {        
+    public class MainCategoryResponseDTO
+    {
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
-        public ICollection<SubCategoryDTO> SubCategories { get; set; }
+
+        public ICollection<SubCategoryResponseDTO> SubCategories { get; set; }
     }
 }

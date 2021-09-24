@@ -1,5 +1,10 @@
 ﻿
+@if(ViewContext.RouteData.Values["Controller"].ToString() != "Admin")
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-@{
-    Layout = "_Layout";
+else
+{
+    Layout = "~/Views/Shared/_AdminStart.cshtml";
 }

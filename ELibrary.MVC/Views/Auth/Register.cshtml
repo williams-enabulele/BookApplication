@@ -6,37 +6,120 @@
 @{
     ViewData["Title"] = "Register";
 }
+@model ELibrary.MVC.Model.DTO.RequestDTO.RegisterDTO
+<body class="bg-gradient-primary bg">
 
-<div class="set bg">
-    <main class="form-signin bg-dark p-5">
-        <form>
-            <div class="row">
-                <div class="col-4 mx-auto">
-                    <h2 class="text-primary">Bookly</h2>
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-sm-10 col-lg-6 col-md-6">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        
+                        <div class="row">
+                            @using (Html.BeginForm("Register", "Auth", FormMethod.Post, new { novalidate = "true", @class = "needs-validation" }))
+                            {
+
+                                <div class="bg-dark p-4">
+                                <h1 class="h3 mb-1 fw-normal text-center"><i class='bx bx-book-reader' style="font-size:50px"></i></h1>
+                                <h1 class="h3 mb-3 fw-normal text-center">Bookly</h1>
+                                <p class="text-center">Please Signup</p>
+                                <div class="form-group mb-2">
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control has-validation", @placeholder = "FirstName", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "badge bg-danger" })
+                                    @if (ViewBag.error != null)
+                                    {
+                                        <span class="badge bg-danger">@ViewBag.error</span>
+                                    }
+                                </div>
+                                <div class="form-group mb-2">
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control has-validation", @placeholder = "LastName", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "badge bg-danger" })
+                                    @if (ViewBag.error != null)
+                                    {
+                                        <span class="badge bg-danger">@ViewBag.error</span>
+                                    }
+                                </div>
+                                <div class="form-group mb-2">
+                                    <select class="form-control has-validation mb-2" asp-items="@Html.GetEnumSelectList<ELibrary.MVC.Model.GenderEnum>()" required></select>
+                                    @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "badge bg-danger" })
+                                    @if (ViewBag.error != null)
+                                    {
+                                        <span class="invalid-feedback">@ViewBag.error</span>
+                                    }
+                                </div>
+                                <div class="form-group mb-2">
+                                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control has-validation", @placeholder = "Email", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge bg-danger" })
+                                    @if (ViewBag.error != null)
+                                    {
+                                        <span class="badge bg-danger">@ViewBag.error</span>
+                                    }
+                                </div>
+                                <div class="form-group mb-2">
+                                    @Html.PasswordFor(x => x.Password, new { @class = "form-control has-validation", @placeholder = "Password", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge bg-danger" })
+                                    @if (ViewBag.error != null)
+                                    {
+                                        <span class="badge bg-danger">@ViewBag.error</span>
+                                    }
+                                </div>
+                                <div class="form-group mb-2">
+                                    @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control has-validation", @placeholder = "Confirm Password", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword, string.Empty, new { @class = "badge bg-danger" })
+                                    @if (ViewBag.error != null)
+                                    {
+                                        <span class="badge bg-danger">@ViewBag.error</span>
+                                    }
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Register" />
+                                </div>
+                                @*<button class="w-100 btn btn-md btn-primary" type="submit" value="Register">Sign up</button>*@
+                                <div class="d-flex justify-content-between ">
+                                    <p>Already have an account?</p>
+                                    <p><a asp-area="" asp-controller="Auth" asp-action="Login">Login <i class='bx bx-right-arrow-alt'></i></a></p>
+                                </div>
+                                <div class="d-flex justify-content-start">
+                                    <p><a asp-area="" asp-controller="Home" asp-action=""><i class='bx bx-left-arrow-alt'></i> Home</a></p>
+                                </div>
+                            </div>
+                           
+                            }
+                        </div>
+                    </div>
                 </div>
+
             </div>
-            <h1 class="h3 mb-3 fw-normal text-center">Please Signup</h1>
-            <div class="form px-4>
-                <input type="text" name="" id="validationCustom01" class="form-control mb-2" placeholder="Name">
-                <input type="email" name="" class="form-control mb-2" placeholder="Email">
-                <input type="text" name="" class="form-control mb-2" placeholder="Phone">
-                <input type="password" name="" class="form-control mb-2" placeholder="Password">
-                <input type="password" name="" class="form-control mb-2" placeholder="Repeat Password">
 
-                <button class="w-100 btn btn-md btn-primary" type="submit" required>Sign up</button>
-                <div class="d-flex justify-content-between mt-2">
-                    <p>Already have an account?</p>
-                    <p><a asp-area="" asp-controller="Auth" asp-action="Login">Login <i class='bx bx-right-arrow-alt'></i></a></p>
-                </div>
-                <div class="d-flex justify-content-start">
-                    <p><a asp-area="" asp-controller="Home" asp-action=""><i class='bx bx-left-arrow-alt'></i> Home</a></p>
-                </div>
-            </div>
+        </div>
 
+    </div>
+  @*  <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
 
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
 
-        </form>
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
 
-    </main>
-
-</div>
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>*@
+</body>

@@ -12,15 +12,14 @@ namespace ELibrary.API.Data
     {
         public static void SeedELibraryDb(RoleManager<IdentityRole> roleManager, UserManager<User> userManager, ElibraryDbContext context)
         {
-
             SeedUserRole(roleManager, userManager, context);
             SeedMainCategory(context);
             SeedSubCategory(context);
             SeedBook(context);
             SeedReview(context);
             SeedRating(context);
-           
         }
+
         private static async void SeedUserRole(RoleManager<IdentityRole> roleManager, UserManager<User> userManager, ElibraryDbContext context)
         {
             try
@@ -55,6 +54,7 @@ namespace ELibrary.API.Data
                 throw;
             }
         }
+
         private static async void SeedMainCategory(ElibraryDbContext context)
         {
             try
@@ -73,6 +73,7 @@ namespace ELibrary.API.Data
                 throw;
             }
         }
+
         private static async void SeedSubCategory(ElibraryDbContext context)
         {
             try
@@ -91,6 +92,7 @@ namespace ELibrary.API.Data
                 throw;
             }
         }
+
         private static async void SeedReview(ElibraryDbContext context)
         {
             try
@@ -109,6 +111,7 @@ namespace ELibrary.API.Data
                 throw;
             }
         }
+
         private static async void SeedRating(ElibraryDbContext context)
         {
             try
@@ -127,6 +130,7 @@ namespace ELibrary.API.Data
                 throw;
             }
         }
+
         private static async void SeedBook(ElibraryDbContext context)
         {
             try

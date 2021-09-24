@@ -56,8 +56,6 @@ namespace ELibrary.API
                     };
                 });
 
-
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -82,13 +80,10 @@ namespace ELibrary.API
             });
             });
 
-
-
             services.AddScoped<IUploadImage, UploadImage>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.Configure<UploadSettings>(Configuration.GetSection("UploadSettings"));
         }
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleManager<IdentityRole> roleManager,
@@ -109,11 +104,11 @@ namespace ELibrary.API
                     });
                 });
             }
-            
+
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ELibrary.API v1"));
-            
-            ELibrarySeeder.SeedELibraryDb(roleManager, userManager, context); 
+
+            ELibrarySeeder.SeedELibraryDb(roleManager, userManager, context);
 
             app.UseHttpsRedirection();
 

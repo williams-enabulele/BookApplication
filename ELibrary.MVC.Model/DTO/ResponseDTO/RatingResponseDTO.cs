@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ELibrary.API.Model.DTO
+namespace ELibrary.MVC.Model.DTO.ResponseDTO
 {
     public class RatingResponseDTO
     {
         public string UserId { get; set; }
         public string BookId { get; set; }
+
         [Required]
         public double RatedValue { get; set; }
+
         public BookResponseDTO Book { get; set; }
         public UserResponseDTO User { get; set; }
     }

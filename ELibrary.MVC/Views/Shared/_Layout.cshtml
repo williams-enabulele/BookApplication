@@ -26,25 +26,24 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="">
-                                    Home @Html.ActionLink("", "", "Home")
+                                    Home 
                                     <span class="visually-hidden"></span>
                                 </a>
                             </li>}
                             <li class="nav-item">
-                                <a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "") " asp-area="" asp-controller="Books" asp-action="">AllBooks @Html.ActionLink("", "", "Books")</a>
+                                <a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Book" ? "active" : "") " asp-area="" asp-controller="Book" asp-action="">Books</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Contact" asp-action="">Contact</a>
+                                <a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Contact" ? "active" : "")" asp-area="" asp-controller="Contact" asp-action="">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="About" asp-action="">Team</a>
+                                <a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "About" ? "active" : "")" asp-area="" asp-controller="About" asp-action="">Team</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class='bx bxs-user'></i></a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="login">Login</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Auth" asp-action="register">Register</a>
-
+                                    <a class="dropdown-item" href="Auth/Login">Login</a>
+                                    <a class="dropdown-item" href="Auth/Register">Register</a>
                                 </div>
                             </li>
                         </ul>
@@ -53,7 +52,6 @@
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
-
             </div>
         </nav>}
     @*Main Container*@
@@ -107,4 +105,3 @@
         @await RenderSectionAsync("Scripts", required: false)
     </body>
 </html>
-

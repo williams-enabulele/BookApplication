@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ELibrary.Common
+﻿namespace ELibrary.Common
 {
     public class Class1
     {

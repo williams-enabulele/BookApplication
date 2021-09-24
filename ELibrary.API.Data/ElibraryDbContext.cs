@@ -1,7 +1,6 @@
 ﻿using ELibrary.API.Model;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace ELibrary.API.Data
 {
@@ -9,7 +8,6 @@ namespace ELibrary.API.Data
     {
         public ElibraryDbContext(DbContextOptions<ElibraryDbContext> options) : base(options)
         {
-
         }
 
         public DbSet<Book> Books { get; set; }
